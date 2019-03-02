@@ -65,6 +65,23 @@ app.get("/scrape", function(req, res) {
             });
         });
 
+        // Route for getting all the Articles from db
+        // WARNING: THIS CODE NEEDS EDITING
+        // DOES NOT WORK YET - SERVER DOESN'T COMMUNICATE
+        // TO THIS
+        app.get("/articles", function(req, res) {
+            console.log("this works");
+            // Grab all articles & display as JSON
+            db.Article.find({})
+                .then(function(dbArticle) {
+                    res.json(dbArticle);
+                })
+                .catch(function(err) {
+                    res.json(err);
+                });
+        });
+
+
 
         
     });
