@@ -104,7 +104,13 @@ app.get("/articles/:id", function(req, res) {
 app.post("/articles/:id", function(req, res) {
     // Create a new Note and pass the req.body as the entry
     db.Note.create(req.body)
-})
+    .then(function(dbComment) {
+        return db.Article.findOneAndUpdate({ _id: req.params.id },{ comment: dbComment._id },{ new: true });
+    })
+    .then(function(dbArticle) {
+        res.json(dbArticle);
+    });
+});
 
 
 
