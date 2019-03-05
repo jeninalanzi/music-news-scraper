@@ -1,16 +1,8 @@
 {
   "name": "music-news-scraper",
   "version": "1.0.0",
-  "description": "",
+  "description": "A news scraper app that allows users to scrape articles and leave comments on them.",
   "main": "server.js",
-  "dependencies": {
-    "axios": "^0.18.0",
-    "cheerio": "^1.0.0-rc.2",
-    "express": "^4.16.4",
-    "express-handlebars": "^3.0.2",
-    "mongoose": "^5.4.16"
-  },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
@@ -19,11 +11,24 @@
     "type": "git",
     "url": "git+https://github.com/jeninalanzi/music-news-scraper.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "scrape",
+    "cheerio",
+    "axios",
+    "node.js"
+  ],
+  "author": "Jenina Lanzi",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/jeninalanzi/music-news-scraper/issues"
   },
-  "homepage": "https://github.com/jeninalanzi/music-news-scraper#readme"
+  "homepage": "https://github.com/jeninalanzi/music-news-scraper#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.2",
+    "mongoose": "^5.4.17"
+  },
+  "devDependencies": {}
 }
