@@ -33,5 +33,38 @@ $(document).on("click", "p", function() {
         $("#comments").append("<h2>" + data.headline);
         $("#comments").append("<input id='title-input' name='title'>");
         $("#comments").append("<textarea id='body-input' name='body'></textarea>");
+        $("#comments").append("<button data-id='" + data._id + "' id='save-comment'>Add Comment</button>");
+
+        // If there is a comment for the article, display it in values.
+        if (data.comment) {
+            $("#title-input").val(data.comment.title);
+            $("#body-input").val(data.comment.body);
+        }
+    });
+});
+
+// On-click for "save-comment" button
+$(document).on("click", "#save-comment", function() {
+
+    // Grab the article's associated id
+    var thisId = $(this).attr("data-id");
+
+    // POST request to change note.
+    $.ajax({
+        method: "POST",
+        url: "/articles/" + thisId,
+        data: {
+            title: $("#title-input").val(),
+            body: $("#body-input").val()
+        }
     })
+    .then(function(data) {
+        // Empty the comments section
+        console.log(data);
+        $("#comments").empty();
+    });
+
+    // Reset the values in input areas
+    $("#title-input").val("");
+    $("#body-input").val("");
 });
