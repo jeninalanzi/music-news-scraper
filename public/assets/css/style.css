@@ -21,6 +21,7 @@ body {
 .card {
     margin: 20px;
     padding: 10px;
+    background-color: #e9d3a3;  
 }
 
 .lead {
@@ -28,3 +29,36 @@ body {
     font-weight: bold;
     text-shadow: 1px 1px 8px black;
 }
+/* 
+#wrapper {
+    width: 700px;
+    margin-left: 0px;
+    margin-right: auto;
+    padding-top: 5%;
+} */
+
+.btn-danger {
+    background-color: #501818;
+}
+
+/* #comments {
+    float: left;
+    width: 30%;
+} */
+
+textarea, input {
+    margin: 10px;
+    display: block;
+    width: 100%;
+    background-color: #FCF5C7;
+}
+
+input {
+    height: 36px;
+    font-size: 24px;
+}
+
+  textarea {
+    height: 200px;
+    font-size: 18px;
+  }

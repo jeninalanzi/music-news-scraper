@@ -14,7 +14,7 @@ $.getJSON("/articles", function(data) {
 
             articleBody.append("<p id='article-headline' data-id='" + data[i]._id + "'>" + data[i].headline + "</p>");
             articleBody.append("<a id='article-url' data-id='" + data[i]._id + "' href='" + data[i].link +"'>" + "Click Here For Full Article!</a>");
-            articleBody.append("<button type='button' class='btn btn-secondary deletebtn' data-id='" + data[i]._id + "' href='/delete'>Delete This Article</button>");
+            articleBody.append("<button type='button' class='btn btn-danger deletebtn' data-id='" + data[i]._id + "' href='/delete'>Delete This Article</button>");
             $("#articles").append(articleBody);
         }
         else {
@@ -22,7 +22,7 @@ $.getJSON("/articles", function(data) {
             articleBody.append("<p id='article-headline' data-id='" + data[i]._id + "'>" + data[i].headline + "</p>");
             articleBody.append("<p id='article-summary' data-id='" + data[i]._id + "'>" + data[i].summary + "</p>");
             articleBody.append("<a id='article-url' data-id='" + data[i]._id + "' href='" + data[i].link +"'>" + "Click Here For Full Article!</a>");
-            articleBody.append("<button type='button' class='btn btn-secondary deletebtn' data-id='" + data[i]._id + "' href='/delete'>Delete This Article</button>");
+            articleBody.append("<button type='button' class='btn btn-danger deletebtn' data-id='" + data[i]._id + "' href='/delete'>Delete This Article</button>");
             $("#articles").append(articleBody);
         }
     }
