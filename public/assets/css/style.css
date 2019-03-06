@@ -1,0 +1,12 @@
+#article-headline {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+#article-url {
+    font-size: 14px;
+}
+
+#article-summary {
+    font-style: italic;
+}

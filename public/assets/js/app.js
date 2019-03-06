@@ -3,15 +3,27 @@
 $.getJSON("/articles", function(data) {
     // For-loop for each article
     for (var i = 0; i < data.length; i++) {
+        // Creating outer object for article body div.
+        var articleBody = $("<div>");
+        articleBody.attr("class", "article-body");
+
         // Some articles scraped do NOT have a summary.
         // I made it so that those articles ONLY display title and link
         // Otherwise post title/link/summary!!
         if (typeof data[i].summary === "undefined") {
-        $("#articles").append("<button data-id='" + data[i]._id + "' class='deletebtn'>X</button><p data-id='" + data[i]._id + "'>" + data[i].headline + "<br />" + data[i].link + "</p>");
+
+            articleBody.append("<p id='article-headline' data-id='" + data[i]._id + "'>" + data[i].headline + "</p>");
+            articleBody.append("<a id='article-url' data-id='" + data[i]._id + "' href='" + data[i].link +"'>" + "Click Here For Full Article!</a>");
+            articleBody.append("<button data-id='" + data[i]._id + "' class='deletebtn' href='/delete'> X </button>");
+            $("#articles").append(articleBody);
         }
         else {
-            $("#articles").append("<button data-id='" + data[i]._id + "' class='deletebtn'>X</button><p data-id='" + data[i]._id + "'>" + data[i].headline + "<br />" + data[i].link + "</p>");
-            $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].summary);
+
+            articleBody.append("<p id='article-headline' data-id='" + data[i]._id + "'>" + data[i].headline + "</p>");
+            articleBody.append("<a id='article-url' data-id='" + data[i]._id + "' href='" + data[i].link +"'>" + "Click Here For Full Article!</a>");
+            articleBody.append("<p id='article-summary' data-id='" + data[i]._id + "'>" + data[i].summary + "</p>");
+            articleBody.append("<button data-id='" + data[i]._id + "' class='deletebtn' href='/delete'>X</button>");
+            $("#articles").append(articleBody);
         }
     }
 });
@@ -67,4 +79,20 @@ $(document).on("click", "#save-comment", function() {
     // Reset the values in input areas
     $("#title-input").val("");
     $("#body-input").val("");
+});
+
+// On-click for deletebtn.
+$(document).on("click", ".deletebtn", function() {
+    // Grab the id associated with article
+    var thisId = $(this).attr("data-id");
+
+    // Send a DELETE request.
+    $.ajax({
+        method: "DELETE",
+        url: "/articles/" + thisId
+    })
+    .then(function(data) {
+        location.reload();
+    });
+    
 });
