@@ -5,7 +5,7 @@ $.getJSON("/articles", function(data) {
     for (var i = 0; i < data.length; i++) {
         // Creating outer object for article body div.
         var articleBody = $("<div>");
-        articleBody.attr("class", "article-body");
+        articleBody.attr("class", "card article-body");
 
         // Some articles scraped do NOT have a summary.
         // I made it so that those articles ONLY display title and link
@@ -14,15 +14,15 @@ $.getJSON("/articles", function(data) {
 
             articleBody.append("<p id='article-headline' data-id='" + data[i]._id + "'>" + data[i].headline + "</p>");
             articleBody.append("<a id='article-url' data-id='" + data[i]._id + "' href='" + data[i].link +"'>" + "Click Here For Full Article!</a>");
-            articleBody.append("<button data-id='" + data[i]._id + "' class='deletebtn' href='/delete'> X </button>");
+            articleBody.append("<button type='button' class='btn btn-secondary deletebtn' data-id='" + data[i]._id + "' href='/delete'>Delete This Article</button>");
             $("#articles").append(articleBody);
         }
         else {
 
             articleBody.append("<p id='article-headline' data-id='" + data[i]._id + "'>" + data[i].headline + "</p>");
-            articleBody.append("<a id='article-url' data-id='" + data[i]._id + "' href='" + data[i].link +"'>" + "Click Here For Full Article!</a>");
             articleBody.append("<p id='article-summary' data-id='" + data[i]._id + "'>" + data[i].summary + "</p>");
-            articleBody.append("<button data-id='" + data[i]._id + "' class='deletebtn' href='/delete'>X</button>");
+            articleBody.append("<a id='article-url' data-id='" + data[i]._id + "' href='" + data[i].link +"'>" + "Click Here For Full Article!</a>");
+            articleBody.append("<button type='button' class='btn btn-secondary deletebtn' data-id='" + data[i]._id + "' href='/delete'>Delete This Article</button>");
             $("#articles").append(articleBody);
         }
     }
@@ -94,5 +94,4 @@ $(document).on("click", ".deletebtn", function() {
     .then(function(data) {
         location.reload();
     });
-    
 });

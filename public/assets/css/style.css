@@ -8,5 +8,23 @@
 }
 
 #article-summary {
-    font-style: italic;
+}
+
+.jumbotron {
+    background-image: url("/assets/images/header.jpg")
+}
+
+body {
+    background-color: black;
+}
+
+.card {
+    margin: 20px;
+    padding: 10px;
+}
+
+.lead {
+    color: white;
+    font-weight: bold;
+    text-shadow: 1px 1px 8px black;
 }
